@@ -14,7 +14,8 @@ import android.widget.Toast;
 import com.example.falcon.seochecklist.R;
 import com.example.falcon.seochecklist.fragments.MenuFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, MenuFragment.IOnMyMenuButtonClick {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,
+        MenuFragment.IOnMyMenuButtonClickListener {
     FrameLayout fragmentContainer;
     FragmentTransaction fTrans;
     Fragment menuFragment, checklistFragment;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-
+            case R.id.btnFirst:
+                menuButtonClick();
         }
     }
 

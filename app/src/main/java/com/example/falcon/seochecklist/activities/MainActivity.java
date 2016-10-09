@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.falcon.seochecklist.R;
+import com.example.falcon.seochecklist.fragments.ChecklistFragment;
 import com.example.falcon.seochecklist.fragments.MenuFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
@@ -49,7 +50,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void menuButtonClick() {
-        Toast.makeText(this, "Yay! Button clicked!", Toast.LENGTH_SHORT).show();
+        checklistFragment = new ChecklistFragment();
+        fTrans = getSupportFragmentManager().beginTransaction();
+        fTrans.replace(R.id.flFragmentContainer, checklistFragment);
+        fTrans.addToBackStack("checklistFragment");
+        fTrans.commit();
         Log.v("myLog", "menuButtonClick");
     }
 }

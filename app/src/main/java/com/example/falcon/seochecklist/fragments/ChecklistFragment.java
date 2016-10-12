@@ -6,10 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.falcon.seochecklist.R;
+import com.example.falcon.seochecklist.activities.Item;
+import com.example.falcon.seochecklist.activities.MyListAdapter;
 
 
 public class ChecklistFragment extends Fragment {
+    private ListView myList;
+    private Item[] items = null;
 
     @Nullable
     @Override
@@ -17,7 +24,16 @@ public class ChecklistFragment extends Fragment {
 
         Toast.makeText(getActivity(), "I am Checklist fragment :)", Toast.LENGTH_SHORT).show();
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        myList = (ListView) getActivity().findViewById(R.id.lvChecklist);
+        items = new Item[5];
+        items[0] = new Item("Семантика", 1);
+        items[1] = new Item("Метатеги", 0);
+        items[2] = new Item("Тексты", 1);
+        items[3] = new Item("Хуяк хуяк", 0);
+        items[4] = new Item("В продлакшн", 0);
+        MyListAdapter adapter = new MyListAdapter(getActivity(), items);
+        myList.setAdapter(adapter);
 
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }
